@@ -19,7 +19,7 @@ exports.default = {
     switch (inProps.node.type) {
       case 'embed':
         return React.createElement(
-          'div',
+          'span',
           _extends({}, attributes, { className: 'slate-plugin-embed-node' }),
           React.createElement('span', { dangerouslySetInnerHTML: { __html: value } }),
           React.createElement(

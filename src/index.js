@@ -5,10 +5,10 @@ export default {
     switch (inProps.node.type) {
       case 'embed':
         return (
-          <div {...attributes} className={'slate-plugin-embed-node'}>
+          <span {...attributes} className={'slate-plugin-embed-node'}>
             <span dangerouslySetInnerHTML={{ __html: value }} />
             <p>{children}</p>
-          </div>
+          </span>
         );
       default:
         return inNext();
