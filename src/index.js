@@ -7,7 +7,7 @@ export default {
         return (
           <span
             {...attributes}
-            className={classnames('slate-plugin-embed-node', { active: isFocused })}
+            className={'slate-plugin-embed-node'}
             dangerouslySetInnerHTML={{ __html: value }}
           />
         );

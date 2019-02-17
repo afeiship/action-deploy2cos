@@ -18,7 +18,7 @@ exports.default = {
     switch (inProps.node.type) {
       case 'embed':
         return React.createElement('span', _extends({}, attributes, {
-          className: classnames('slate-plugin-embed-node', { active: isFocused }),
+          className: 'slate-plugin-embed-node',
           dangerouslySetInnerHTML: { __html: value }
         }));
       default:
