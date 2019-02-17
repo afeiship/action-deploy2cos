@@ -12,7 +12,8 @@ exports.default = {
   renderNode: function renderNode(inProps, inEditor, inNext) {
     var children = inProps.children,
         isFocused = inProps.isFocused,
-        attributes = _objectWithoutProperties(inProps, ['children', 'isFocused']);
+        isSelectecd = inProps.isSelectecd,
+        attributes = _objectWithoutProperties(inProps, ['children', 'isFocused', 'isSelectecd']);
 
     var value = inProps.node.data.get('value');
     switch (inProps.node.type) {
