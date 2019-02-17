@@ -9,5 +9,9 @@ npm install -S afeiship/slate-plugin-embed --registry=https://registry.npm.taoba
 
 ## usage:
 ```js
-//DOCS here!
+editor.insertInline({
+  type: 'embed',
+  isVoid: true,
+  data: { value: embed }
+})
 ```
