@@ -1,15 +1,14 @@
 export default {
-  renderMark(inProps, inEditor, inNext) {
+  renderNode(inProps, inEditor, inNext) {
     const { children, isFocused, ...attributes } = inProps;
     const value = inProps.node.data.get('value');
     switch (inProps.node.type) {
       case 'embed':
         return (
-          <span
-            {...attributes}
-            className={'slate-plugin-embed-node'}
-            dangerouslySetInnerHTML={{ __html: value }}
-          />
+          <div {...attributes} className={'slate-plugin-embed-node'}>
+            <span dangerouslySetInnerHTML={{ __html: value }} />
+            <p>{children}</p>
+          </div>
         );
       default:
         return inNext();

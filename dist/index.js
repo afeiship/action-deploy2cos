@@ -9,7 +9,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 exports.default = {
-  renderMark: function renderMark(inProps, inEditor, inNext) {
+  renderNode: function renderNode(inProps, inEditor, inNext) {
     var children = inProps.children,
         isFocused = inProps.isFocused,
         attributes = _objectWithoutProperties(inProps, ['children', 'isFocused']);
@@ -17,10 +17,16 @@ exports.default = {
     var value = inProps.node.data.get('value');
     switch (inProps.node.type) {
       case 'embed':
-        return React.createElement('span', _extends({}, attributes, {
-          className: 'slate-plugin-embed-node',
-          dangerouslySetInnerHTML: { __html: value }
-        }));
+        return React.createElement(
+          'div',
+          _extends({}, attributes, { className: 'slate-plugin-embed-node' }),
+          React.createElement('span', { dangerouslySetInnerHTML: { __html: value } }),
+          React.createElement(
+            'p',
+            null,
+            children
+          )
+        );
       default:
         return inNext();
     }
