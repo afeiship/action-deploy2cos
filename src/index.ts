@@ -1,8 +1,7 @@
 import httpRestConfig from '@jswork/http-rest-config';
 
-export default (inConfig, inRequest, inOptions?): any => {
+export default (inConfig, inRequest): any => {
   const context = {};
-  const http = inRequest.getInstance(inOptions);
-  httpRestConfig(context, http, inConfig);
+  httpRestConfig(context, inRequest, inConfig);
   return context;
 };
