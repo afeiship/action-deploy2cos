@@ -54,7 +54,7 @@ runs:
 
     # step6: Config TencentCli
     - name: Use cos-cli
-      uses: afeiship/action-coscli@1.0.2
+      uses: afeiship/action-coscli@master
 
     # step7: Deploy by coscli
     - name: Deploy by cos
