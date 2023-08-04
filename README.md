@@ -8,16 +8,15 @@
 name: deploy2cos workflow
 on:
   push:
-    branches:
-      - master
+    branches: master
+
 jobs:
   Release:
     name: Release
     runs-on: ubuntu-latest
     env:
-      ACCESS_KEY_ID: ${{ secrets.ALIBABACLOUD_ACCESS_KEY_ID }}
-      ACCESS_KEY_SECRET: ${{ secrets.ALIBABACLOUD_ACCESS_KEY_SECRET }}
-      REGION: ${{ secrets.ALIBABACLOUD_REGION_ID }}
+      COS_YML: ${{ secrets.COS_YML }}
+
 
     if: contains(github.event.head_commit.message, '__@production__')
     steps:
@@ -25,5 +24,9 @@ jobs:
         uses: afeiship/action-deploy2cos@master
         with:
           build_dist: "build"
-          oss_bucket: "oss://you-bucket/sub-path/assets/test-app-deploy2cos/"
+          oss_bucket: cos://your-cos/test/
+
+      - name: Debug
+        run: |
+          printenv
 ```
