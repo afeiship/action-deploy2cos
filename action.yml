@@ -52,12 +52,13 @@ runs:
       shell: bash
       run: yarn build
 
-    # step6: Config AliyunCli
+    # step6: Config TencentCli
     - name: Use cos-cli
-      uses: afeiship/action-cos-cli@1.0.1
+      uses: afeiship/action-cos-cli@1.0.2
 
-    # step7: Deploy by aliyun-cli
+    # step7: Deploy by coscli
     - name: Deploy by cos
       shell: bash
       run: |
-        coscli sync ${{ inputs.build_dist }} ${{ inputs.oss_bucket }} --force --delete
+        coscli rm ${{ inputs.oss_bucket }} --recursive --force
+        coscli sync ${{ inputs.build_dist }} ${{ inputs.oss_bucket }} --recursive --thread-num=10
