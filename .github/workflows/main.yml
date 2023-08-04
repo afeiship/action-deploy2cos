@@ -8,9 +8,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     env:
-      COS_SECRET_ID: ${{ secrets.COS_SECRET_ID }}
-      COS_SECRET_KEY: ${{ secrets.COS_SECRET_KEY }}
-      COS_REGION: ${{ secrets.COS_REGION }}
+      COS_YML: ${{ secrets.COS_YML }}
 
 
     if: contains(github.event.head_commit.message, '__@production__')
@@ -19,7 +17,7 @@ jobs:
         uses: afeiship/action-deploy2cos@master
         with:
           build_dist: "build"
-          oss_bucket: cos://wms-dicfree-cn-1319335595/test/
+          oss_bucket: cos://wms/test/
 
       - name: Debug
         run: |
