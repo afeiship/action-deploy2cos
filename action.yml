@@ -60,6 +60,6 @@ runs:
     - name: Deploy by cos
       shell: bash
       run: |
-        set -e
+        # set -e
         coscli rm ${{ inputs.oss_bucket }} --recursive --force
         coscli sync ${{ inputs.build_dist }}/ ${{ inputs.oss_bucket }} --recursive --thread-num=10
