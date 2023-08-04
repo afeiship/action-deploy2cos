@@ -1,15 +1,8 @@
-# action-deploy2cos
-> A composite steps for deploy frontend filesto cos.
-
-## usage
-1. set secret `gh secret set -f ~/.aliyun/.env.kubebio`
-2. use below workflow
-```yml
 name: deploy2cos workflow
 on:
   push:
-    branches:
-      - master
+    branches: master
+
 jobs:
   Release:
     name: Release
@@ -26,4 +19,7 @@ jobs:
         with:
           build_dist: "build"
           oss_bucket: "oss://you-bucket/sub-path/assets/test-app-deploy2cos/"
-```
+
+      - name: Debug
+        run: |
+          printenv
