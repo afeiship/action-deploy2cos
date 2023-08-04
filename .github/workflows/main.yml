@@ -20,7 +20,7 @@ jobs:
         uses: afeiship/action-deploy2cos@master
         with:
           build_dist: "build"
-          oss_bucket: "cos://wms-dicfree-cn-1319335595/test/"
+          oss_bucket: cos://wms-dicfree-cn-1319335595/test/
 
       - name: Debug
         run: |
