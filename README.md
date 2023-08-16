@@ -30,3 +30,36 @@ jobs:
         run: |
           printenv
 ```
+
+## for multiple envs
+
+```yml
+name: moban-admin workflow for AliyunOSS
+on: [push]
+jobs:
+  beta:
+    runs-on: ubuntu-latest
+    env:
+      COS_YML: ${{ secrets.COS_YML }}
+
+    if: contains(github.event.head_commit.message, '__@beta__')
+    steps:
+      - name: All in one for beta
+        uses: afeiship/action-deploy2cos@master
+        with:
+          build_dist: "dist"
+          oss_bucket: cos://your-cos/beta/
+
+  production:
+    runs-on: ubuntu-latest
+    env:
+      COS_YML: ${{ secrets.COS_YML }}
+
+    if: contains(github.event.head_commit.message, '__@production__')
+    steps:
+      - name: All in one for production
+        uses: afeiship/action-deploy2cos@master
+        with:
+          build_dist: "dist"
+          oss_bucket: cos://your-cos/production/
+```
